@@ -11,6 +11,8 @@ class u(unittest.TestCase):
     self.failIf(False)
   def testImport(self):
     item = Item('ID',0,0,0,0)
+    self.failIf(item.icon == 5)
+    self.failUnless(item.icon == 0)
 
 def main():
   unittest.main()
