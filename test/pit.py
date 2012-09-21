@@ -25,10 +25,16 @@ class u(unittest.TestCase):
     self.failUnless(Chance.over(0,-1) == True)
     self.failUnless(Chance.match(0,0) == True)
     self.failUnless(Chance.win(1,0,0,0) == True)
-    ic = 0
+    ic1 = 0
+    ic2 = 0
+    ic3 = 0
     for i in range(10000):
-      if Chance.win(50,0,25,0): ic += 1
-    self.failIf(ic < 6000)
+      if Chance.win(6,0,4,0): ic1 += 1
+      if Chance.win(4,1,4,0): ic2 += 1
+      if Chance.win(4,0,4,0): ic3 += 1
+    self.failIf(ic1 < 6000)
+    self.failIf(ic2 > 5000)
+    self.failIf(ic3 < 5000)
 def main():
   unittest.main()
 
