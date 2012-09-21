@@ -15,3 +15,7 @@ class Chance:
     sr = random.randint(0,s) - sc
     dr = random.randint(0,d) - dc 
     return sr >= dr
+
+  @staticmethod
+  def value(s):
+    return random.randint(0,s)
