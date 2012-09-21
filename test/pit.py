@@ -27,8 +27,7 @@ class u(unittest.TestCase):
     self.failUnless(Chance.win(1,0,0,0) == True)
     ic = 0
     for i in range(10000):
-      if Chance.win(50,0,25,0):
-        ic += 1
+      if Chance.win(50,0,25,0): ic += 1
     self.failIf(ic < 6000)
 def main():
   unittest.main()
