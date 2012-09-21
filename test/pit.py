@@ -22,7 +22,7 @@ class u(unittest.TestCase):
     world = World()
     self.failIf(world == None)
   def testRules(self):
-    self.failUnless(Chance.flip(0,-1) == True)
+    self.failUnless(Chance.over(0,-1) == True)
     self.failUnless(Chance.match(0,0) == True)
     self.failUnless(Chance.win(5,0,0,0) == True)
 def main():

@@ -3,7 +3,7 @@ import random
 
 class Chance:
   @staticmethod
-  def flip(source, challenge):
+  def over(source, challenge):
     return random.randint(0,source) > challenge
 
   @staticmethod
