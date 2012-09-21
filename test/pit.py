@@ -3,6 +3,7 @@
 import pyglet
 import unittest
 from item import * 
+from rules import *
 
 class u(unittest.TestCase):
   def testTrue(self):
@@ -20,6 +21,10 @@ class u(unittest.TestCase):
   def testNewWorld(self):
     world = World()
     self.failIf(world == None)
+  def testRules(self):
+    self.failUnless(Chance.flip(0,-1) == True)
+    self.failUnless(Chance.match(0,0) == True)
+    self.failUnless(Chance.win(5,0,0,0) == True)
 def main():
   unittest.main()
 
