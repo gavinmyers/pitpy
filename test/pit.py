@@ -42,6 +42,15 @@ class u(unittest.TestCase):
     self.failIf(ic5 < 7250)
     self.failIf(ic6 > 1500)
     self.failIf(ic7 < 47000)
+  def testBattle(self):
+    miyagi = Player()
+    miyagi.attributes["STR"] = Strength(4,0)
+    miyagi.attributes["DEX"] = Dexterity(8,0)
+    miyagi.attributes["KTE"] = Karate(8,0)
+    daniel = Player()
+    daniel.attributes["STR"] = Strength(2,0)
+    daniel.attributes["DEX"] = Dexterity(4,0)
+    daniel.attributes["KTE"] = Karate(4,0)
 def main():
   unittest.main()
 
