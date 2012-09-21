@@ -10,11 +10,11 @@ class u(unittest.TestCase):
   def testFalse(self):
     self.failIf(False)
   def testImport(self):
-    item = Item('ID',0,0,0,0)
+    item = Item('ID',0,0,0,0,1,1)
     self.failIf(item.icon == 5)
     self.failUnless(item.icon == 0)
   def testNewLevel(self):
-    level = Level()
+    level = Level(25,25)
     self.failIf(level == None)
     self.failIf(level.items == None)
   def testNewWorld(self):
