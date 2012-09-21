@@ -11,9 +11,11 @@ class u(unittest.TestCase):
   def testFalse(self):
     self.failIf(False)
   def testImport(self):
-    item = Thing('ID',0,0,0,0,1,1)
+    item = Thing()
     self.failIf(item.icon == 5)
     self.failUnless(item.icon == 0)
+    player = Player()
+    self.failUnless(player.health == 0)
   def testRules(self):
     self.failUnless(Chance.over(0,-1) == True)
     self.failUnless(Chance.match(0,0) == True)
