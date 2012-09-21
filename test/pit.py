@@ -2,7 +2,7 @@
 
 import pyglet
 import unittest
-from item import Item 
+from item import * 
 
 class u(unittest.TestCase):
   def testTrue(self):
@@ -13,7 +13,13 @@ class u(unittest.TestCase):
     item = Item('ID',0,0,0,0)
     self.failIf(item.icon == 5)
     self.failUnless(item.icon == 0)
-
+  def testNewLevel(self):
+    level = Level.generate()
+    self.failIf(level == None)
+    self.failIf(level.items == None)
+  def testNewWorld(self):
+    world = World.generate()
+    self.failIf(world == None)
 def main():
   unittest.main()
 
