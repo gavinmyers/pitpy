@@ -14,11 +14,11 @@ class u(unittest.TestCase):
     self.failIf(item.icon == 5)
     self.failUnless(item.icon == 0)
   def testNewLevel(self):
-    level = Level.generate()
+    level = Level()
     self.failIf(level == None)
     self.failIf(level.items == None)
   def testNewWorld(self):
-    world = World.generate()
+    world = World()
     self.failIf(world == None)
 def main():
   unittest.main()
