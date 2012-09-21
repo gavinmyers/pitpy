@@ -2,8 +2,9 @@
 
 import pyglet
 import unittest
-from item import * 
+from thing import * 
 from rules import *
+from attribute import *
 
 class u(unittest.TestCase):
   def testTrue(self):

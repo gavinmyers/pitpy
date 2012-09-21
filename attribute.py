@@ -23,17 +23,3 @@ class Karate(Attribute):
     self.code = "KTE"
     self.value = value
 
-class Thing:
-  icon = 0
-  x = 0
-  y = 0
-  z = 0
-  height = 0
-  width = 0
-  weight = 0
-  contents = []
-  attributes = {} 
-
-class Player(Thing):
-  health= 0
-
