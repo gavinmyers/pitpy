@@ -28,13 +28,22 @@ class u(unittest.TestCase):
     ic1 = 0
     ic2 = 0
     ic3 = 0
+    ic4 = 0
+    ic5 = 0
+    ic6 = 0
     for i in range(10000):
       if Chance.win(6,0,4,0): ic1 += 1
       if Chance.win(4,1,4,0): ic2 += 1
       if Chance.win(4,0,4,0): ic3 += 1
+      if Chance.over(100,50): ic4 += 1
+      if Chance.over(100,25): ic5 += 1
+      if Chance.match(10,1):  ic6 += 1
     self.failIf(ic1 < 6000)
     self.failIf(ic2 > 5000)
     self.failIf(ic3 < 5000)
+    self.failIf(ic4 < 4000 or ic4 > 6000)
+    self.failIf(ic5 < 7250)
+    self.failIf(ic6 > 1500)
 def main():
   unittest.main()
 
