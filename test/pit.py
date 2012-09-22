@@ -45,13 +45,33 @@ class u(unittest.TestCase):
     self.failIf(ic7 < 47000)
   def testBattle(self):
     miyagi = Player()
+    miyagi.name = "Mr. Miyagi"
+    miyagi.attributes = {} 
     miyagi.attributes["STR"] = Strength(4,0)
     miyagi.attributes["DEX"] = Dexterity(8,0)
     miyagi.attributes["KTE"] = Karate(8,0)
+    miyagi.health = 16 
     daniel = Player()
-    daniel.attributes["STR"] = Strength(2,0)
+    daniel.name = "Daniel"
+    daniel.attributes = {} 
+    daniel.attributes["STR"] = Strength(4,0)
     daniel.attributes["DEX"] = Dexterity(4,0)
     daniel.attributes["KTE"] = Karate(4,0)
+    daniel.health = 16
+    deadMiyagis = 0
+    deadDaniels = 0
+    for i in range(10000):
+      daniel.attack(miyagi)
+      miyagi.attack(daniel)
+      if miyagi.health < 1: 
+        deadMiyagis += 10 
+        miyagi.health = 16
+        daniel.health = 16
+      if daniel.health < 1:
+        deadDaniels += 1
+        miyagi.health = 16
+        daniel.health = 16
+    self.failIf(deadMiyagis > deadDaniels)
 def main():
   unittest.main()
 
