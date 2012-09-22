@@ -20,14 +20,3 @@ class Chance:
   def value(s):
     return random.randint(0,s)
 
-class Interact:
-  @staticmethod
-  def attack(attacker, defender):
-    attackStr = attacker.attributes["KTE"].value 
-    defendStr = defender.attributes["DEX"].value
-    if Chance.over(attackStr,defendStr):
-      Interact.damage(defender,attacker.attribute["STR"])
-
-  @staticmethod
-  def damage(who, ammount):
-    who.health -= ammount
