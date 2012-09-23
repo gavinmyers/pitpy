@@ -83,8 +83,8 @@ class u(unittest.TestCase):
     houses = 0
     doubles = 0
     pairs = 0
+    deck = Deck()
     for i in range(30000):
-      deck = Deck()
       self.failUnless(len(deck.cards) == 52)
       hand = deck.draw(5)
       if hand.type == "STRAIGHT-FLUSH": straightflushes += 1 
@@ -95,7 +95,7 @@ class u(unittest.TestCase):
       if hand.type == "HOUSE": houses += 1
       if hand.type == "DOUBLE": doubles += 1
       if hand.type == "PAIR":  pairs += 1
-    self.failIf(straightflushes > focs > houses > flushes > straights > tocs > doubls > pairs)
+    self.failIf(straightflushes > focs > houses > flushes > straights > tocs > doubles > pairs)
 def main():
   unittest.main()
 

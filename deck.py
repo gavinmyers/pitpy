@@ -18,7 +18,9 @@ class Deck:
 
   def draw(self,total):
     if(total > 5): total = 5
-    if(self.index + total > 52): self.index = 0
+    if(self.index + total > 52): 
+      self.index = 0
+      random.shuffle(self.cards)
     hand = self.cards[self.index:self.index+total]
     self.index += total
     return Hand(hand)
