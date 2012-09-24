@@ -90,10 +90,14 @@ class u(unittest.TestCase):
       if hand.type == "STRAIGHT-FLUSH": straightflushes += 1 
       elif hand.type == "FLUSH": flushes += 1 
       elif hand.type == "STRAIGHT": straights += 1
-      elif hand.type == "FOUR": focs += 1
-      elif hand.type == "THREE": tocs += 1
-      elif hand.type == "HOUSE": houses += 1
-      elif hand.type == "DOUBLE": doubles += 1
+      elif hand.type == "FOUR": 
+        focs += 1
+      elif hand.type == "THREE": 
+        tocs += 1
+      elif hand.type == "HOUSE": 
+        houses += 1
+      elif hand.type == "DOUBLE": 
+        doubles += 1
       elif hand.type == "PAIR":  pairs += 1
     self.failIf(straightflushes > focs > houses > flushes > straights > tocs > doubles > pairs)
 def main():
