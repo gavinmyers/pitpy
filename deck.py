@@ -17,7 +17,7 @@ class Deck:
     random.shuffle(self.cards) 
 
   def draw(self,total):
-    if(total > 5): total = 5
+    if(total < 5): total = 5
     if(self.index + total > 52): 
       self.index = 0
       random.shuffle(self.cards)
@@ -32,6 +32,31 @@ class Card:
 
 class Hand:
   def __init__(self, cards):
+    if(len(cards) == 5): 
+      self.rank(cards);
+    elif(len(cards) > 5):
+      hand = {}
+      score = 0
+      #wow, what a hack... 
+      for i in range(31,2**len(cards)):
+        pattern = []
+        for j,s in enumerate(str(bin(i))):
+          if s == "1":
+            pattern.append(1)
+          elif j > 1:
+            pattern.append(0)
+        if sum(pattern) == 5:
+          possibleHand = []
+          for j,s in enumerate(pattern):
+            if s == 1:
+              possibleHand.append(cards[j])
+          if self.rank(possibleHand) > score:
+            hand = possibleHand
+            score = self.rank(possibleHand)
+      self.rank(possibleHand)
+
+  #this entire process needs to be reconsidered             
+  def rank(self,cards):
     self.cards = cards 
     self.type = ""
     self.score = 0
@@ -100,6 +125,7 @@ class Hand:
       self.score = 0.5 + (self.high / 1000.0)
 
     if self.score == 0: self.score = 0.1 + (self.high / 1000.0)
-  
+    return self.score
+ 
   def beats(self, hand):
-    return True
+    return self.score > hand.score

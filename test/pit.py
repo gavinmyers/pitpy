@@ -73,33 +73,42 @@ class u(unittest.TestCase):
         miyagi.health = 16
         daniel.health = 16
     self.failIf(deadMiyagis > deadDaniels)
-  def testCards(self):
-    straightflushes = 0
-    flushes = 0
-    straights = 0
-    paris = 0
-    tocs = 0
-    focs = 0
-    houses = 0
-    doubles = 0
-    pairs = 0
+  def test7Card(sefl):
     deck = Deck()
-    for i in range(30000):
+    deck.draw(7)
+  def testCards(self):
+    straightflushes = []
+    flushes = []
+    straights = []
+    focs = [] 
+    houses = [] 
+    tocs = []
+    doubles = [] 
+    pairs = []
+    highs = []
+    deck = Deck()
+    for i in range(20000):
       self.failUnless(len(deck.cards) == 52)
-      hand = deck.draw(5)
-      if hand.type == "STRAIGHT-FLUSH": straightflushes += 1 
-      elif hand.type == "FLUSH": flushes += 1 
-      elif hand.type == "STRAIGHT": straights += 1
-      elif hand.type == "FOUR": 
-        focs += 1
-      elif hand.type == "THREE": 
-        tocs += 1
-      elif hand.type == "HOUSE": 
-        houses += 1
-      elif hand.type == "DOUBLE": 
-        doubles += 1
-      elif hand.type == "PAIR":  pairs += 1
-    self.failIf(straightflushes > focs > houses > flushes > straights > tocs > doubles > pairs)
+      hand = deck.draw(7)
+      if hand.type == "STRAIGHT-FLUSH": 
+        straightflushes.append(hand) 
+      elif hand.type == "FLUSH": flushes.append(hand) 
+      elif hand.type == "STRAIGHT": straights.append(hand)
+      elif hand.type == "FOUR": focs.append(hand) 
+      elif hand.type == "THREE": tocs.append(hand) 
+      elif hand.type == "HOUSE": houses.append(hand) 
+      elif hand.type == "DOUBLE": doubles.append(hand) 
+      elif hand.type == "PAIR": pairs.append(hand)
+      else : highs.append(hand) 
+    print "STRAIGHT-FLUSH " + str(len(straightflushes))
+    print "FOUR " + str(len(focs))
+    print "HOUSE " + str(len(houses))
+    print "FLUSH " + str(len(flushes))
+    print "STRAIGHT " + str(len(straights))
+    print "THREE " + str(len(tocs))
+    print "DOUBLE " + str(len(doubles))
+    print "PAIR " + str(len(pairs))
+    self.failIf(len(pairs) < len(doubles) < len(tocs) < len(straights) < len(flushes) < len(houses) < len(focs) < len(straightFlushes))
 def main():
   unittest.main()
 
