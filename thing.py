@@ -10,16 +10,6 @@ class Thing:
   width = 0
   weight = 0
   contents = []
+  location = {}
   attributes = {} 
 
-class Player(Thing):
-  health= 0
-
-  def attack(self, defender):
-    attack = self.attributes["KTE"].value 
-    defend = defender.attributes["DEX"].value
-    if Chance.win(attack,0,defend,0):
-      defender.damage(self.attributes["STR"].value)
-
-  def damage(self, ammount):
-    self.health -= ammount

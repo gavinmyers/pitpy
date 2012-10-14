@@ -3,6 +3,8 @@
 import pyglet
 import unittest
 from thing import * 
+from monster import *
+from weapon import *
 from rules import *
 from deck import *
 from attribute import *
@@ -16,7 +18,7 @@ class u(unittest.TestCase):
     item = Thing()
     self.failIf(item.icon == 5)
     self.failUnless(item.icon == 0)
-    player = Player()
+    player = Monster()
     self.failUnless(player.health == 0)
   def testRules(self):
     self.failUnless(Chance.over(0,-1) == True)
@@ -45,34 +47,72 @@ class u(unittest.TestCase):
     self.failIf(ic6 > 1500)
     self.failIf(ic7 < 47000)
   def testBattle(self):
-    miyagi = Player()
+    bowman = Monster()
+    bowman.name = "Bow Man"
+    bowman.weapon = ProjectileWeapon()
+    bowman.attributes = {}
+    bowman.attributes["STR"] = Strength(0,0)
+    bowman.attributes["BOW"] = Bow(100,0)  
+    bowman.attributes["DEX"] = Dexterity(250,0)
+    bowman.health = 16
+
+    swordsman = Monster()
+    swordsman.name = "Bow Man"
+    swordsman.weapon = BladeWeapon()
+    swordsman.attributes = {}
+    swordsman.attributes["STR"] = Strength(0,0)
+    swordsman.attributes["BLD"] = Sword(100,0)  
+    swordsman.attributes["DEX"] = Dexterity(250,0)
+    swordsman.health = 16
+
+    miyagi = Monster()
+    miyagi = Monster()
     miyagi.name = "Mr. Miyagi"
+    miyagi.weapon = MartialArts()
     miyagi.attributes = {} 
-    miyagi.attributes["STR"] = Strength(4,0)
-    miyagi.attributes["DEX"] = Dexterity(8,0)
-    miyagi.attributes["KTE"] = Karate(8,0)
+    miyagi.attributes["STR"] = Strength(250,0)
+    miyagi.attributes["DEX"] = Dexterity(250,0)
+    miyagi.attributes["KTE"] = Karate(250,0)
     miyagi.health = 16 
-    daniel = Player()
+    daniel = Monster()
     daniel.name = "Daniel"
+    daniel.weapon = MartialArts()
     daniel.attributes = {} 
-    daniel.attributes["STR"] = Strength(4,0)
-    daniel.attributes["DEX"] = Dexterity(4,0)
-    daniel.attributes["KTE"] = Karate(4,0)
+    daniel.attributes["STR"] = Strength(100,0)
+    daniel.attributes["DEX"] = Dexterity(100,0)
+    daniel.attributes["KTE"] = Karate(100,0)
     daniel.health = 16
     deadMiyagis = 0
     deadDaniels = 0
-    for i in range(10000):
+    deadSwordsmen = 0
+    deadBowmen = 0
+    for i in range(2500):
+      swordsman.attack(bowman)
+      if bowman.health < 1: 
+        deadBowmen += 1 
+        bowman.health = 16
+        swordsman.health = 16
+      bowman.attack(swordsman)
+      if swordsman.health < 1:
+        deadSwordsmen += 1
+        bowman.health = 16
+        swordsman.health = 16
+
       daniel.attack(miyagi)
-      miyagi.attack(daniel)
       if miyagi.health < 1: 
-        deadMiyagis += 10 
+        deadMiyagis += 1 
         miyagi.health = 16
         daniel.health = 16
+      miyagi.attack(daniel)
       if daniel.health < 1:
         deadDaniels += 1
         miyagi.health = 16
         daniel.health = 16
+    #print str(deadMiyagis) + " vs " + str(deadDaniels)
+    #print str(deadBowmen) + " vs " + str(deadSwordsmen)
     self.failIf(deadMiyagis > deadDaniels)
+    self.failIf(deadSwordsmen > deadBowmen)
+    self.failIf(deadSwordsmen > 100)
   def test7Card(sefl):
     deck = Deck()
     deck.draw(7)
@@ -89,7 +129,7 @@ class u(unittest.TestCase):
     deck = Deck()
     for i in range(20000):
       self.failUnless(len(deck.cards) == 52)
-      hand = deck.draw(7)
+      hand = deck.draw(5)
       if hand.type == "STRAIGHT-FLUSH": 
         straightflushes.append(hand) 
       elif hand.type == "FLUSH": flushes.append(hand) 
@@ -100,14 +140,14 @@ class u(unittest.TestCase):
       elif hand.type == "DOUBLE": doubles.append(hand) 
       elif hand.type == "PAIR": pairs.append(hand)
       else : highs.append(hand) 
-    print "STRAIGHT-FLUSH " + str(len(straightflushes))
-    print "FOUR " + str(len(focs))
-    print "HOUSE " + str(len(houses))
-    print "FLUSH " + str(len(flushes))
-    print "STRAIGHT " + str(len(straights))
-    print "THREE " + str(len(tocs))
-    print "DOUBLE " + str(len(doubles))
-    print "PAIR " + str(len(pairs))
+    #print "STRAIGHT-FLUSH " + str(len(straightflushes))
+    #print "FOUR " + str(len(focs))
+    #print "HOUSE " + str(len(houses))
+    #print "FLUSH " + str(len(flushes))
+    #print "STRAIGHT " + str(len(straights))
+    #print "THREE " + str(len(tocs))
+    #print "DOUBLE " + str(len(doubles))
+    #print "PAIR " + str(len(pairs))
     self.failIf(len(pairs) < len(doubles) < len(tocs) < len(straights) < len(flushes) < len(houses) < len(focs) < len(straightFlushes))
 def main():
   unittest.main()
