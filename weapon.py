@@ -45,11 +45,5 @@ class BladeWeapon(Weapon):
     Weapon.__init__(self)
     self.at = Sword 
 
-  def attack(self,user):
-    return user.attributes[self.at].value 
-
-  def defend(self,user):
-    return user.attributes[self.df].value  
-
   def damage(self,user):
     return random.randint(20,50)
