@@ -18,3 +18,4 @@ class Monster(Thing):
   def damage(self, ammount):
     if self.dead(): return
     self.health -= ammount
+    if self.health < 0: self.die()

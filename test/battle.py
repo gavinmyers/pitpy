@@ -49,25 +49,25 @@ class u(unittest.TestCase):
     for i in range(2500):
 
       Combat.attack(swordsman,bowman)
-      if bowman.health < 1: 
+      if bowman.dead(): 
         deadBowmen += 1 
         bowman.health = 16
         swordsman.health = 16
 
       Combat.attack(bowman,swordsman)
-      if swordsman.health < 1:
+      if swordsman.dead():
         deadSwordsmen += 1
         bowman.health = 16
         swordsman.health = 16
 
       Combat.attack(daniel,miyagi)
-      if miyagi.health < 1: 
+      if miyagi.dead(): 
         deadMiyagis += 1 
         miyagi.health = 16
         daniel.health = 16
 
       Combat.attack(miyagi,daniel)
-      if daniel.health < 1:
+      if daniel.dead():
         deadDaniels += 1
         miyagi.health = 16
         daniel.health = 16

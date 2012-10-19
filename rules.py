@@ -30,4 +30,3 @@ class Combat(object):
     if Chance.win(av,0,dv,0):
       damage = aw.damage(a)
       d.damage(damage)
-      if d.health < 0: d.die()
