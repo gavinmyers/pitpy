@@ -47,27 +47,31 @@ class u(unittest.TestCase):
     deadSwordsmen = 0
     deadBowmen = 0
     for i in range(2500):
-      swordsman.attack(bowman)
+
+      Combat.attack(swordsman,bowman)
       if bowman.health < 1: 
         deadBowmen += 1 
         bowman.health = 16
         swordsman.health = 16
-      bowman.attack(swordsman)
+
+      Combat.attack(bowman,swordsman)
       if swordsman.health < 1:
         deadSwordsmen += 1
         bowman.health = 16
         swordsman.health = 16
 
-      daniel.attack(miyagi)
+      Combat.attack(daniel,miyagi)
       if miyagi.health < 1: 
         deadMiyagis += 1 
         miyagi.health = 16
         daniel.health = 16
-      miyagi.attack(daniel)
+
+      Combat.attack(miyagi,daniel)
       if daniel.health < 1:
         deadDaniels += 1
         miyagi.health = 16
         daniel.health = 16
+
     #print str(deadMiyagis) + " vs " + str(deadDaniels)
     #print str(deadBowmen) + " vs " + str(deadSwordsmen)
     self.failIf(deadMiyagis > deadDaniels)

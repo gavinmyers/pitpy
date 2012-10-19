@@ -20,3 +20,14 @@ class Chance:
   def value(s):
     return random.randint(0,s)
 
+class Combat(object):
+  @staticmethod
+  def attack(a,d):
+    aw = a.weapon
+    av = aw.attack(a)
+    dw = d.weapon
+    dv = dw.defend(d)
+    if Chance.win(av,0,dv,0):
+      damage = aw.damage(a)
+      d.damage(damage)
+      if d.health < 0: d.die()
