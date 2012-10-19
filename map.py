@@ -21,6 +21,12 @@ class Tile(Thing):
     Thing.__init__(self)
     self.style = "O" 
 
+  def icon(self):
+    if len(self.contents) > 0:
+      return self.contents[0].style
+    else:
+      return self.style
+
 class AsciiMap(Map):
   def __init__(self,w,h):
     Map.__init__(self,w,h)
@@ -30,6 +36,7 @@ class AsciiMap(Map):
     for y in range(self.height):
       row = ""
       for x in range (self.width):
-        row += self.tile(x,y).style
+        tile = self.tile(x,y)
+        row += tile.icon()
       print row 
 

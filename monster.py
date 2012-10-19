@@ -3,11 +3,11 @@ from rules import Combat
 from thing import Thing
 
 class Monster(Thing):
-  health= 0
-  weapon={}
-
   def __init__(self):
     super(Monster,self).__init__()
+    self.health = 0
+    self.weapon = {}
+    self.style = "@"
 
   def die(self):
     self.health = -1
