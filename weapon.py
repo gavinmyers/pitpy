@@ -4,6 +4,7 @@ from attribute import *
 
 class Weapon(Thing):
   def __init__(self):
+    Thing.__init__(self)
     self.at = {} 
     self.df = Dexterity 
     self.dm = Strength 
