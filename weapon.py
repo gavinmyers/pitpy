@@ -1,11 +1,12 @@
 import random
 from thing import Thing
+from attribute import *
 
 class Weapon(Thing):
   def __init__(self):
-    self.at = "" 
-    self.df = "DEX" 
-    self.dm = "STR"
+    self.at = {} 
+    self.df = Dexterity 
+    self.dm = Strength 
 
   def damage(self,user):
     return random.randint(1,user.attributes[self.dm].value)
@@ -19,12 +20,12 @@ class Weapon(Thing):
 class MartialArts(Weapon):
   def __init__(self):
     Weapon.__init__(self)
-    self.at = "KTE" 
+    self.at = Karate 
 
 class ProjectileWeapon(Weapon):
   def __init__(self):
     Weapon.__init__(self)
-    self.at = "BOW"
+    self.at =Bow 
     self.projectiles = 100
 
   def attack(self,user):
@@ -42,7 +43,7 @@ class ProjectileWeapon(Weapon):
 class BladeWeapon(Weapon):
   def __init__(self):
     Weapon.__init__(self)
-    self.at = "BLD"
+    self.at = Sword 
 
   def attack(self,user):
     return user.attributes[self.at].value 
