@@ -5,6 +5,9 @@ class Monster(Thing):
   health= 0
   weapon={}
 
+  def __init__(self):
+    super(Monster,self).__init__()
+
   def die(self):
     self.health = -1
 

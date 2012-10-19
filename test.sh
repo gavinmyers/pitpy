@@ -1,1 +1,1 @@
-python -m test.pit
+python -m test.battle

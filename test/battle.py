@@ -14,37 +14,33 @@ class u(unittest.TestCase):
     bowman = Monster()
     bowman.name = "Bow Man"
     bowman.weapon = ProjectileWeapon()
-    bowman.attributes = {}
-    bowman.attributes[Strength] = Strength(0,0)
-    bowman.attributes[Bow] = Bow(100,0)  
-    bowman.attributes[Dexterity] = Dexterity(250,0)
+    bowman.attribute(Strength,0,0)
+    bowman.attribute(Bow,100,0)  
+    bowman.attribute(Dexterity,250,0)
     bowman.health = 16
 
     swordsman = Monster()
     swordsman.name = "Swords Guy"
     swordsman.weapon = BladeWeapon()
-    swordsman.attributes = {}
-    swordsman.attributes[Strength] = Strength(0,0)
-    swordsman.attributes[Sword] = Sword(100,0)  
-    swordsman.attributes[Dexterity] = Dexterity(250,0)
+    swordsman.attribute(Strength,0,0)
+    swordsman.attribute(Sword,100,0)  
+    swordsman.attribute(Dexterity,250,0)
     swordsman.health = 16
 
     miyagi = Monster()
     miyagi.name = "Mr. Miyagi"
     miyagi.weapon = MartialArts()
-    miyagi.attributes = {} 
-    miyagi.attributes[Strength] = Strength(250,0)
-    miyagi.attributes[Dexterity] = Dexterity(250,0)
-    miyagi.attributes[Karate] = Karate(250,0)
+    miyagi.attribute(Strength,250,0)
+    miyagi.attribute(Dexterity,250,0)
+    miyagi.attribute(Karate,250,0)
     miyagi.health = 16 
 
     daniel = Monster()
     daniel.name = "Daniel"
     daniel.weapon = MartialArts()
-    daniel.attributes = {} 
-    daniel.attributes[Strength] = Strength(100,0)
-    daniel.attributes[Dexterity] = Dexterity(100,0)
-    daniel.attributes[Karate] = Karate(100,0)
+    daniel.attribute(Strength,100,0)
+    daniel.attribute(Dexterity,100,0)
+    daniel.attribute(Karate,100,0)
     daniel.health = 16
     deadMiyagis = 0
     deadDaniels = 0
